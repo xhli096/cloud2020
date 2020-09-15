@@ -19,3 +19,5 @@ target/
 ### Java template
 # Compiled class file
 *.class
+cloud-consumer-order80/src/test/
+cloud-provider-payment8001/src/test/
