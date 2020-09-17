@@ -12,6 +12,11 @@
     <artifactId>cloud-provider-payment8001</artifactId>
 
     <dependencies>
+        <dependency>
+            <groupId>com.xinghaol.springcloud</groupId>
+            <artifactId>cloud-api-commons</artifactId>
+            <version>${project.version}</version>
+        </dependency>
         <!-- 包含了sleuth zipkin 数据链路追踪-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
