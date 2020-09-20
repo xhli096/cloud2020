@@ -12,6 +12,11 @@
     <artifactId>cloud-consumer-order80</artifactId>
 
     <dependencies>
+        <!--引入eureka client的jar包，要入住eureka注册中心-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
         <dependency>
             <groupId>com.xinghaol.springcloud</groupId>
             <artifactId>cloud-api-commons</artifactId>
