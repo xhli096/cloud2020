@@ -5,10 +5,7 @@ import com.xinghaol.springcloud.entities.CommonResult;
 import com.xinghaol.springcloud.entities.Payment;
 import com.xinghaol.springcloud.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.logging.log4j.util.Strings;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cloud.client.ServiceInstance;
-import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Objects;
 
 /**
@@ -34,13 +30,10 @@ public class PaymentController {
     @Value("${server.port}")
     private String serverPort;
 
-    @Resource
-    private DiscoveryClient discoveryClient;
-
     @PostMapping(value = "/payment/create")
     public CommonResult insert(@RequestBody Payment payment) {
         HashMap<Integer, Integer> map = new HashMap<>();
-        map.put(1, 1);
+        map.put(1,1);
         log.info("插入payment={}", JSON.toJSONString(payment));
         int result = paymentService.insert(payment);
         log.info("插入结果result={}", result);
@@ -54,7 +47,6 @@ public class PaymentController {
     @GetMapping(value = "/payment/get/{id}")
     public CommonResult getPaymentById(@PathVariable("id") Long id) {
         log.info("查询参数id={}", id);
-        int a = 10;
         Payment payment = paymentService.queryPaymentById(id);
         log.info("查询结果result={}", JSON.toJSONString(payment));
         if (Objects.nonNull(payment)) {
@@ -64,15 +56,4 @@ public class PaymentController {
         }
     }
 
-    @GetMapping("/payment/discovery")
-    public Object discovery() {
-        List<String> services = discoveryClient.getServices();
-        services.stream().filter(Strings::isNotBlank).forEach(element -> log.info("element : " + element));
-
-        // 根据id去获取
-        List<ServiceInstance> instances = discoveryClient.getInstances("CLOUD-PAYMENT-SERVICE");
-        instances.stream().filter(Objects::nonNull).forEach(instance -> log.info("serviceId: {}, host: {}, port: {}, uri: {}", instance.getServiceId(), instance.getHost(), instance.getPort(), instance.getUri()));
-
-        return discoveryClient;
-    }
 }

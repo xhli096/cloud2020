@@ -13,3 +13,7 @@ eureka:
     service-url:
       # 把集群中的所有注册中心都加进去
       defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/
+  instance:
+    instance-id: order80
+    # 访问路径中可以显示IP地址
+    prefer-ip-address: true

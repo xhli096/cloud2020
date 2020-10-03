@@ -1,5 +1,6 @@
 package com.xinghaol.springcloud.config;
 
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
@@ -11,7 +12,13 @@ import org.springframework.web.client.RestTemplate;
  */
 @Configuration
 public class ApplicationContextConfig {
+    /**
+     * 使用@LoadBalanced注解使得RestTemplate支持负载均衡
+     *
+     * @return
+     */
     @Bean
+    @LoadBalanced
     public RestTemplate restTemplate() {
         return new RestTemplate();
     }

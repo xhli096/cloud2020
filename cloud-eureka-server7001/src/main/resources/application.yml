@@ -3,6 +3,10 @@ server:
 eureka:
   instance:
     hostname: eureka7001.com # 服务名称
+    # eureka客户端向服务的发送心跳的时间间隔，单位是秒，默认是30s
+    # lease-expiration-duration-in-seconds: 1
+    # eureka服务端在收到最后一次心跳后等待时间上限，单位是秒，超时剔除服务，默认为90s
+    # lease-renewal-interval-in-seconds: 2
   client:
     # false表示不想注册中心中注册自己
     register-with-eureka: false
@@ -11,3 +15,4 @@ eureka:
     service-url:
       # 设置eureka server交互地址查询服务和注册服务都需要依赖这个地址
       defaultZone: http://eureka7002.com:7002/eureka/
+
