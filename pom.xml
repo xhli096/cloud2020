@@ -17,6 +17,8 @@
         <module>cloud-eureka-server7002</module>
         <module>cloud-provider-payment8002</module>
         <module>kafka-mooc-study</module>
+        <module>cloud-provider-payment8004</module>
+        <module>cloud-consumer-zk-order81</module>
     </modules>
 
 

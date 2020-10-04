@@ -1,0 +1,9 @@
+server:
+  port: 80
+spring:
+  application:
+    name: cloud-order-service
+  cloud:
+    zookeeper:
+      # 如果是集群的话，connect-string就是写多个ip地址
+      connect-string: 192.168.218.134:2181
