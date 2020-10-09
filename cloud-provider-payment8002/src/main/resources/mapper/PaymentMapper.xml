@@ -4,7 +4,7 @@
     <insert id="insert" parameterType="com.xinghaol.springcloud.entities.Payment" useGeneratedKeys="true"
             keyProperty="id">
         INSERT INTO payment (serial)
-        VALUES (#{payment});
+        VALUES (#{serial});
     </insert>
 
     <resultMap id="Base_Result_Map" type="com.xinghaol.springcloud.entities.Payment">

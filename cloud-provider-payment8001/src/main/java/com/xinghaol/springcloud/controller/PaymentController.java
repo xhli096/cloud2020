@@ -33,7 +33,6 @@ public class PaymentController {
 
     @Value("${server.port}")
     private String serverPort;
-
     @Resource
     private DiscoveryClient discoveryClient;
 
@@ -74,5 +73,10 @@ public class PaymentController {
         instances.stream().filter(Objects::nonNull).forEach(instance -> log.info("serviceId: {}, host: {}, port: {}, uri: {}", instance.getServiceId(), instance.getHost(), instance.getPort(), instance.getUri()));
 
         return discoveryClient;
+    }
+
+    @GetMapping("/payment/lb")
+    public String getPaymentLB() {
+        return serverPort;
     }
 }
