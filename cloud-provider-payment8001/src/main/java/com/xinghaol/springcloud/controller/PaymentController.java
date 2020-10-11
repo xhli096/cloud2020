@@ -19,6 +19,7 @@ import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author: lixinghao
@@ -37,7 +38,7 @@ public class PaymentController {
     private DiscoveryClient discoveryClient;
 
     @PostMapping(value = "/payment/create")
-    public CommonResult insert(@RequestBody Payment payment) {
+    public CommonResult<Payment> insert(@RequestBody Payment payment) {
         HashMap<Integer, Integer> map = new HashMap<>();
         map.put(1, 1);
         log.info("插入payment={}", JSON.toJSONString(payment));
@@ -51,7 +52,7 @@ public class PaymentController {
     }
 
     @GetMapping(value = "/payment/get/{id}")
-    public CommonResult getPaymentById(@PathVariable("id") Long id) {
+    public CommonResult<Payment> getPaymentById(@PathVariable("id") Long id) {
         log.info("查询参数id={}", id);
         int a = 10;
         Payment payment = paymentService.queryPaymentById(id);
@@ -77,6 +78,22 @@ public class PaymentController {
 
     @GetMapping("/payment/lb")
     public String getPaymentLB() {
+        return serverPort;
+    }
+
+    /**
+     * 模拟一个长流程的调用
+     *
+     * @return
+     */
+    @GetMapping("/payment/feign/timeout")
+    public String paymentFeignTimeout() {
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         return serverPort;
     }
 }
