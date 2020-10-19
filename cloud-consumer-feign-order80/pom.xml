@@ -12,6 +12,11 @@
     <artifactId>cloud-consumer-feign-order80</artifactId>
 
     <dependencies>
+        <!-- hystrix-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+        </dependency>
         <dependency>
             <groupId>com.xinghaol.springcloud</groupId>
             <artifactId>cloud-api-commons</artifactId>
@@ -31,7 +36,7 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
-        <!--eureka client-->
+        <!--引入eureka client的jar包，要入住eureka注册中心-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
