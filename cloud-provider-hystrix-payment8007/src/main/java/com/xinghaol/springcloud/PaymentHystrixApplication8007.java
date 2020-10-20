@@ -2,6 +2,7 @@ package com.xinghaol.springcloud;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 
 /**
  * @author: lixinghao
@@ -9,8 +10,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @Description:
  */
 @SpringBootApplication
-public class PaymentHystrixApplication {
+@EnableCircuitBreaker
+public class PaymentHystrixApplication8007 {
     public static void main(String[] args) {
-        SpringApplication.run(PaymentHystrixApplication.class, args);
+        SpringApplication.run(PaymentHystrixApplication8007.class, args);
     }
 }
