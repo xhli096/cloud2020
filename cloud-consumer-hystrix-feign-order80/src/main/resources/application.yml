@@ -1,0 +1,36 @@
+server:
+  port: 80
+
+spring:
+  application:
+    name: cloud-conumser-hystrix-feign-order
+  datasource:
+    # 当前数据源操作类型
+    type: com.alibaba.druid.pool.DruidDataSource
+    # mysql驱动类
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/db2019?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=GMT%2B8
+    username: root
+    password: 123456
+
+eureka:
+  client:
+    # 表示是否将自己注册到eureka server中，默认是true
+    register-with-eureka: true
+    # 是否从eureka server中抓取已有的注册信息，默认为true。单节点无所谓，集群情况下必须为true才能配合ribbon使用负载均衡
+    fetch-registry: true
+    service-url:
+      # 把集群中的所有注册中心都加进去
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/
+  instance:
+    instance-id: cloud-conumser-hystrix-feign-order80
+    # 访问路径中可以显示IP地址
+    prefer-ip-address: true
+
+# 开启feign支持hystrix,
+# https://blog.csdn.net/mxmxz/article/details/84633098 这个链接关于feign+hystrix超时时间设置
+# http://blog.java1234.com/blog/articles/440.html   这个链接关于feign+hystrix超时时间设置
+feign:
+  hystrix:
+    enabled: true
+
