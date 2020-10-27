@@ -1,15 +1,12 @@
 package com.xinghaol.springcloud.controller;
 
 import com.xinghaol.springcloud.service.PaymentHystrixService;
-import io.micrometer.core.instrument.util.TimeUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.concurrent.TimeUnit;
 
 /**
  * @author: lixinghao
@@ -34,4 +31,9 @@ public class PaymentController {
         return paymentHystrixService.paymentTimeout(id);
     }
 
+    /************************************************************ 分割线-服务熔断 ************************************************************/
+    @GetMapping("/payment/circuit/{id}")
+    public String paymentCircuitBreaker(@PathVariable("id") Integer id) {
+        return paymentHystrixService.paymentCircuitBreaker(id);
+    }
 }

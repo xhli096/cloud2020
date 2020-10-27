@@ -36,6 +36,7 @@ public class PaymentHystrixService {
         return "线程：" + Thread.currentThread().getName() + ", 8001x系统繁忙或者运行报错，方法：paymentTimeoutFallback，id :  " + id + ", ┭┮﹏┭┮";
     }
 
+    /************************************************************ 分割线-服务熔断 ************************************************************/
     @HystrixCommand(fallbackMethod = "paymentCircuitBreakerFallback", commandProperties = {
             // 是否开启断路器
             @HystrixProperty(name = "circuitBreaker.enabled", value = "true"),
