@@ -88,3 +88,4 @@ public String paymentCircuitBreakerFallback(@PathVariable("id") Integer id) {
 
 #### 服务监控hystrixDashBoard
 仪表盘-9001
+主启动类添加 ： @EnableHystrixDashboard注解
