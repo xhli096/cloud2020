@@ -89,3 +89,42 @@ public String paymentCircuitBreakerFallback(@PathVariable("id") Integer id) {
 #### 服务监控hystrixDashBoard
 仪表盘-9001
 主启动类添加 ： @EnableHystrixDashboard注解
+
+
+## 11、服务网关
+### zuul和gateway网关
+#### zuul 脑图
+#### gateway 新一代网关
+##### 概述简介
+1、官网：
+    
+zuul：https://github.com/Netflix/zuul/wiki
+    
+当前gateway：https://cloud.spring.io/spring-cloud-static/spring-cloud-gateway/2.2.1.RELEASE/reference/html/
+
+2、是什么：
+
+Cloud全家桶中有个很重要的组件就是网关，在1.x版本中都是采用的zuul网关；但是在2.x版本中，zuul的升级一直推迟，spring cloud自研了一个网关替代
+zuul，就是SpringCloud Gateway。      
+
+Gateway是在spring生态之上构建的API网关服务，基于Spring5，Spring Boot2和Project Reactor等技术。GateWay
+旨在提供一种简单而有效的方式来对API进行路由，以及提供一些强大的过滤功能，例如：熔断、限流、重试等。
+
+SpringCloud Gateway作为Spring Cloud生态系统的网关，目标是替代Zuul，在SpringCloud 2.0以上的版本中，没有对
+新版本Zuul 2.0以上最新高性能版本进行集成，任然还是使用的Zuul 1.x非Reactor模式的老版本。为了提升网关的性能，SpringCloud
+Gateway是基于WebFlux框架实现的，而WebFlux框架底层使用了高性能的Reactor模式通信框架Netty。
+
+3、能干嘛：反向代理、鉴权、流量控制、熔断、日志监控...
+
+##### 三大核心概念
+    
+##### getway工作流程
+    
+##### 入门配置
+    
+##### 通过微服务名实现动态路由
+    
+##### predicate的使用
+    
+##### filter的使用
+    
